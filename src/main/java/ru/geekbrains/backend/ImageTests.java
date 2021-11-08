@@ -92,8 +92,8 @@ public class ImageTests extends BaseTest {
                 .extract()
                 .response()
                 .jsonPath();
-        String uploadedId=     json.getString("data.id");
-        uploadedImageId=     json.getString("data.deletehash");
+        String uploadedId= json.getString("data.id");
+        uploadedImageId= json.getString("data.deletehash");
 
        given()
                 .headers("Authorization", token)
