@@ -77,7 +77,6 @@ public class ImageTests extends BaseTest {
                 .response()
                 .jsonPath()
                 .getString("data.deletehash");
-
     }
     @Test
     void setFavoriteAnImageTest() {
