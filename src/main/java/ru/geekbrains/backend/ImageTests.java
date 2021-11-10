@@ -69,6 +69,7 @@ public class ImageTests extends BaseTest {
                 .multiPart("image", new File(PATH_TO_IMAGE_TWO))
                 .expect()
                 .statusCode(200)
+                .body("type",CoreMatchers.is("image/gif"))
                 .when()
                 .post("https://api.imgur.com/3/upload")
                 .prettyPeek()
@@ -92,8 +93,8 @@ public class ImageTests extends BaseTest {
                 .extract()
                 .response()
                 .jsonPath();
-        String uploadedId=     json.getString("data.id");
-        uploadedImageId=     json.getString("data.deletehash");
+        String uploadedId= json.getString("data.id");
+        uploadedImageId= json.getString("data.deletehash");
 
        given()
                 .headers("Authorization", token)
@@ -110,7 +111,8 @@ public class ImageTests extends BaseTest {
                 .jsonPath();
 
     }
-    @AfterEach
+
+      @AfterEach
     void tearDown() {
         given()
                 .headers("Authorization", token)
