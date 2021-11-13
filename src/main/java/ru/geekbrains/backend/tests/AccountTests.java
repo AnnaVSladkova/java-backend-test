@@ -1,6 +1,5 @@
-package ru.geekbrains.backend;
+package ru.geekbrains.backend.tests;
 
-import io.restassured.http.Headers;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.given;
@@ -11,9 +10,7 @@ public class AccountTests extends BaseTest {
 
     @Test
     void getAccountInfoTest() {
-        given()
-                .headers("Authorization", token)
-                .when()
+        given(requestSpecificationWithAuth, positiveResponseSpecification)
                 .get("https://api.imgur.com/3/account/{username}", username)
                 .then()
                 .statusCode(200);

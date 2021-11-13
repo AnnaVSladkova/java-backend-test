@@ -1,8 +1,11 @@
-package ru.geekbrains.backend;
+package ru.geekbrains.backend.tests;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.given;
 import java.io.File;
+import java.util.UUID;
+
 import org.hamcrest.CoreMatchers;
 
 
@@ -15,7 +18,7 @@ public class NegativeTests extends BaseTest {
     @Test
     void setUploadFileWithuotImageTest() {
         int code = given()
-                .headers("Authorization", token)
+              .headers("Authorization", token)
                 .expect()
                 .statusCode(400)
                 .body("success", CoreMatchers.is(false))
@@ -56,4 +59,5 @@ public class NegativeTests extends BaseTest {
                 .extract()
                 .response();
     }
+
 }
